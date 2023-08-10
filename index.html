@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio</title>
+    <style>
+        *{
+            border: 0;
+            padding: 0;
+            border: box;
+            margin: 0;
+        }
+        .box-degrade{
+            width: 1536px;
+            height: 500px;
+            padding: 100px 0 ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(to left , #5271FF, #004aad,rgb(66, 167, 255) );
+            background-size: 500% 100%;
+            animation: degrade-animado 5s infinite alternate;
+        }
+        @keyframes degrade-animado{
+            0%{
+                background-position-x: 0%;
+            }
+            100%{
+                background-position-x:100% ;
+            }
+
+        }
+        h2{
+          color: white;
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+          font-size: 30px;
+          text-align: center;
+          margin-top: 50px;
+        }
+        .entradas{
+           margin-top: 50px;
+            display: flex;
+        }
+        .entrada{
+            display: flex;
+        }
+        .min, .max{
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 22px;
+            text-align: center;
+            margin-left: 38px;
+            margin-right: 5px;
+        }
+        #min, #max{
+            width: 200px;
+            text-align: center;
+        }
+        #max{
+            width: 196px;
+        }
+        .container{
+            background-color: #5271FF;
+            width: 700px;
+            height: 300px;
+            align-items: center;
+            border: white solid 3px;
+        }
+        .sorteios{
+            display: flex;
+            margin-top: 40px;
+            justify-content: center;
+        }
+        .sortear{
+            background-color: white;
+            color: #5271FF;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            width: 100px;
+            height: 30px;
+        }
+        #resultado{
+           color: white;
+           font-size: 34px;
+           font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .resultado{
+            margin-top: 20px;
+            margin-left: 345px;
+        }
+       
+
+
+
+    </style>
+</head>
+<body>
+    <div class="box-degrade">
+     <div class="container">
+        <h2>SORTEIO</h2>
+
+        <div class="entradas">
+            <div class="entrada">
+                <label for="min" class="min">mínimo:</label>
+                <input type="number" id="min" name="min">
+            </div>
+            <div class="entrada">
+                <label for="max" class="max">máximo:</label>
+                <input type="number" id="max" name="max">
+            </div>
+        </div>
+        <div class="sorteios">
+        <button id="Sortear" class="sortear">Sortear</button>
+        
+    </div>
+    <div class="resultado">
+    <div id="resultado"></div>
+</div>
+     </div>
+     
+      
+    </div>
+
+    
+         
+    <script>
+        let button = document.getElementById('Sortear');
+
+        button.addEventListener('click', function(){
+            let min = parseInt(document.getElementById('min').value);
+            let max = parseInt(document.getElementById('max').value);
+
+            let resultado = Math.floor(Math.random()*(max - min + 1)+min);
+
+            if(isNaN(resultado)){
+                resultado ="Informe um número"
+            }
+
+            document.querySelector('#resultado').textContent = resultado;
+        })
+    </script>
+</body>
+</html>
